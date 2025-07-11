@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-font-family: var(--font-sans);
+  --default-font-feature-settings: var(--font-sans--font-feature-settings);
+  --default-font-variation-settings: var(--font-sans--font-variation-settings);
+  --default-mono-font-family: var(--font-mono);
+  --default-mono-font-feature-settings: var(--font-mono--font-feature-settings);
+  --default-mono-font-variation-settings: var(
+    --font-mono--font-variation-settings
+  );
+
+  /* Dark Dashboard Design System Colors */
+  --color-background: 13 13 13; /* #0D0D0D */
+  --color-foreground: 255 255 255; /* #FFFFFF */
+  --color-card: 17 17 17; /* #111111 */
+  --color-card-foreground: 255 255 255; /* #FFFFFF */
+  --color-popover: 26 26 26; /* #1A1A1A */
+  --color-popover-foreground: 255 255 255; /* #FFFFFF */
+  --color-primary: 30 144 255; /* #1E90FF */
+  --color-primary-foreground: 255 255 255; /* #FFFFFF */
+  --color-secondary: 26 26 26; /* #1A1A1A */
+  --color-secondary-foreground: 255 255 255; /* #FFFFFF */
+  --color-muted: 26 26 26; /* #1A1A1A */
+  --color-muted-foreground: 166 166 166; /* #A6A6A6 */
+  --color-accent: 30 144 255; /* #1E90FF */
+  --color-accent-foreground: 255 255 255; /* #FFFFFF */
+  --color-destructive: 255 77 79; /* #FF4D4F */
+  --color-destructive-foreground: 255 255 255; /* #FFFFFF */
+  --color-border: 46 46 46; /* #2E2E2E */
+  --color-input: 46 46 46; /* #2E2E2E */
+  --color-ring: 30 144 255; /* #1E90FF */
+  --radius: 0.5rem;
+}
+
+* {
+  border-color: rgb(var(--color-border));
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+}
+
+/* Component base styles with Dark Dashboard colors */
+.card {
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #2e2e2e;
+  border-radius: var(--radius);
+}
+
+.btn-primary {
+  background-color: #1e90ff;
+  color: #ffffff;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.btn-primary:hover {
+  background-color: rgba(30, 144, 255, 0.9);
+}
+
+/* Input and form elements with Dark Dashboard colors */
+input,
+textarea,
+select {
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #2e2e2e;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #1e90ff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #a6a6a6;
+}
+
+/* Select dropdown styling with Dark Dashboard colors */
+option {
+  background-color: #111111;
+  color: #ffffff;
+}
