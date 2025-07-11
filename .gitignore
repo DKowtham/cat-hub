@@ -42,10 +42,6 @@ next-env.d.ts
 # History directory (VS Code extension)
 .history/
 
-# Keep Cursor rules but exclude other Cursor files
-.cursor/
-!.cursor/rules/
-
 # Logs
 logs
 *.log
