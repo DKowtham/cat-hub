@@ -3,9 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const API_BASE =
   "https://app.papernest.com/api/offer-catalog/staff/internal/energy-offers-list";
 const TOKEN =
-  process.env.ENERGY_API_TOKEN ||
-  process.env.APP_BACKEND_ENDPOINT_TOKEN ||
-  "4f513673dded1898fcc62a4f7ad19780f92bff4e2cb26e1a5f0abeafc9d6a32c";
+  process.env.ENERGY_API_TOKEN || process.env.APP_BACKEND_ENDPOINT_TOKEN;
 
 const COUNTRY = "ITA";
 
@@ -19,6 +17,23 @@ const corsHeaders = {
 
 export async function GET(request: NextRequest) {
   try {
+    // Validate that API token is available
+    if (!TOKEN) {
+      console.error("Italian Energy API Error: Missing API token");
+      return NextResponse.json(
+        {
+          error: "API configuration error",
+          details: "Missing ENERGY_API_TOKEN or APP_BACKEND_ENDPOINT_TOKEN environment variable",
+          country: COUNTRY,
+          endpoint: "Italian Energy API",
+        },
+        {
+          status: 500,
+          headers: corsHeaders,
+        }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
 
     // Get query parameters

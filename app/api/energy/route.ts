@@ -17,6 +17,23 @@ const corsHeaders = {
 
 export async function GET(request: NextRequest) {
   try {
+    // Validate that API token is available
+    if (!TOKEN) {
+      console.error("Energy API Error: Missing API token");
+      return NextResponse.json(
+        {
+          error: "API configuration error",
+          details:
+            "Missing ENERGY_API_TOKEN or APP_BACKEND_ENDPOINT_TOKEN environment variable",
+          endpoint: "Energy API",
+        },
+        {
+          status: 500,
+          headers: corsHeaders,
+        }
+      );
+    }
+
     const { searchParams } = new URL(request.url);
 
     // Get all query parameters
